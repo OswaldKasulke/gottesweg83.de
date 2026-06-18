@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gottesweg 83 – Wohnen in Köln-Zollstock</title>
+  <meta name="description" content="Möbliertes WG-Zimmer in Köln-Zollstock zu vermieten. 17 m², 650 € warm, ab 1. August 2026 frei.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #ffffff;
+      --off-white: #f7f6f4;
+      --light-grey: #ebebeb;
+      --mid-grey: #9a9a9a;
+      --dark: #1e1e1e;
+      --accent: #4a6741;
+      --accent-light: #e8efe7;
+      --font: 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--light-grey);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    nav .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--dark);
+    }
+
+    nav .logo img {
+      height: 40px;
+      width: 40px;
+      object-fit: contain;
+    }
+
+    nav .logo span {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul a {
+      text-decoration: none;
+      color: var(--dark);
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--accent); }
+
+    nav .nav-cta {
+      background: var(--accent);
+      color: white !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    nav .nav-cta:hover { background: #3a5432 !important; color: white !important; }
+
+    /* HERO */
+    .hero {
+      margin-top: 64px;
+      height: calc(100vh - 64px);
+      min-height: 500px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.55) 100%);
+    }
+
+    .hero-text {
+      position: absolute;
+      bottom: 3rem;
+      left: 3rem;
+      color: white;
+    }
+
+    .hero-text .tag {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 3px;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      opacity: 0.85;
+    }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    p { margin-bottom: 1rem; color: #444; }
+
+    /* ABOUT */
+    #ueber-uns { background: var(--off-white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text p { font-size: 1.05rem; }
+
+    .about-facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .fact-box {
+      background: white;
+      border: 1px solid var(--light-grey);
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+
+    .fact-box .number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .fact-box .label { font-size: 0.85rem; color: var(--mid-grey); }
+
+    /* GALLERY */
+    #galerie { background: var(--white); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 6px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    /* ZIMMER FREI */
+    #zimmer { background: var(--accent-light); }
+
+    .zimmer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .price-card {
+      background: white;
+      border: 1px solid var(--light-grey);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .price-card-header {
+      background: var(--accent);
+      color: white;
+      padding: 1.5rem 2rem;
+    }
+
+    .price-card-header .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.25);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      margin-bottom: 0.75rem;
+    }
+
+    .price-card-header h3 {
+      font-size: 1.6rem;
+      font-weight: 300;
+      margin-bottom: 0.25rem;
+    }
+
+    .price-card-header .date {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .price-card-body { padding: 2rem; }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--light-grey);
+      font-size: 0.95rem;
+    }
+
+    .price-row:last-of-type { border-bottom: none; }
+
+    .price-row .val { font-weight: 600; color: var(--dark); }
+
+    .price-total {
+      margin-top: 1.5rem;
+      padding: 1rem 1.5rem;
+      background: var(--off-white);
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .price-total .label { font-size: 0.9rem; color: var(--mid-grey); }
+    .price-total .total { font-size: 1.6rem; font-weight: 700; color: var(--accent); }
+
+    .feature-list {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+
+    .feature-list li {
+      padding: 0.5rem 0;
+      font-size: 0.95rem;
+      color: #444;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .feature-list li::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .zimmer-info h2 { margin-bottom: 1rem; }
+
+    .zimmer-info p { font-size: 1.05rem; }
+
+    /* CONTACT */
+    #kontakt { background: var(--dark); color: white; }
+
+    #kontakt .section-label { color: #8db888; }
+
+    #kontakt h2 { color: white; }
+
+    #kontakt p { color: rgba(255,255,255,0.7); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: white;
+      text-decoration: none;
+      font-size: 1.3rem;
+      font-weight: 400;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      padding-bottom: 0.25rem;
+      margin-top: 0.5rem;
+      transition: border-color 0.2s;
+    }
+
+    .contact-link:hover { border-color: white; }
+
+    .contact-address {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.8;
+    }
+
+    .contact-map {
+      border-radius: 8px;
+      overflow: hidden;
+      height: 300px;
+      background: #333;
+    }
+
+    .contact-map iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: grayscale(0.3);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #111;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: white; }
+
+    footer .divider { margin: 0 0.75rem; }
+
+    /* LIGHTBOX */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox.active { display: flex; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    .lightbox-close:hover { opacity: 1; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .about-grid, .zimmer-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-facts { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .hero-text { left: 1.5rem; bottom: 2rem; }
+      section { padding: 3rem 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .about-facts { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">
+    <img src="images/logo.png" alt="Gottesweg 83">
+    <span>Gottesweg 83</span>
+  </a>
+  <ul>
+    <li><a href="#ueber-uns">Über uns</a></li>
+    <li><a href="#galerie">Galerie</a></li>
+    <li><a href="#zimmer">Freies Zimmer</a></li>
+    <li><a href="#kontakt" class="nav-cta">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <img src="images/FLO04417-HDR-BearbeitetHIGHRES.jpg" alt="Gottesweg 83, Köln-Zollstock">
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <div class="tag">Köln-Zollstock</div>
+    <h1>Gottesweg 83</h1>
+    <p>Möblierte WG-Zimmer im Herzen von Zollstock</p>
+  </div>
+</div>
+
+<!-- ÜBER UNS -->
+<section id="ueber-uns">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">Über uns</div>
+        <h2>Eine Gemeinschaft von Vermietern</h2>
+        <p>Die Gottesweg 83 eGbR verwaltet und vermietet möblierte WG-Zimmer in einem gepflegten Mehrfamilienhaus in Köln-Zollstock. Unser Ziel ist es, unseren Mieterinnen ein unkompliziertes, angenehmes Wohnen zu ermöglichen.</p>
+        <p>Das Haus befindet sich direkt an der Hauptstraße mit ausgezeichneter Anbindung an den öffentlichen Nahverkehr und liegt in fußläufiger Entfernung zu Restaurants, Supermärkten und Parks.</p>
+      </div>
+      <div class="about-facts">
+        <div class="fact-box">
+          <div class="number">4. OG</div>
+          <div class="label">Hochgelegen mit Weitblick</div>
+        </div>
+        <div class="fact-box">
+          <div class="number">1986</div>
+          <div class="label">Baujahr, solide Bausubstanz</div>
+        </div>
+        <div class="fact-box">
+          <div class="number">100+</div>
+          <div class="label">Mbit/s Internet inklusive</div>
+        </div>
+        <div class="fact-box">
+          <div class="number">50969</div>
+          <div class="label">Köln-Zollstock</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIE -->
+<section id="galerie">
+  <div class="container">
+    <div class="section-label">Galerie</div>
+    <h2>Einblicke in die Wohnung</h2>
+    <div class="gallery-grid">
+      <img src="images/FLO04387-HDRHIGHRES.jpg" alt="Zimmer Übersicht" onclick="openLightbox(this.src)">
+      <img src="images/FLO04377-HDRHIGHRES.jpg" alt="Arbeitsbereich" onclick="openLightbox(this.src)">
+      <img src="images/FLO04382-HDRHIGHRES.jpg" alt="Schlafbereich" onclick="openLightbox(this.src)">
+      <img src="images/FLO04392-HDRHIGHRES.jpg" alt="Kochnische mit Eingang" onclick="openLightbox(this.src)">
+      <img src="images/FLO04407-HDRHIGHRES.jpg" alt="Kochnische Detail" onclick="openLightbox(this.src)">
+      <img src="images/FLO04402-HDR-BearbeitetHIGHRES.jpg" alt="Badezimmer" onclick="openLightbox(this.src)">
+    </div>
+  </div>
+</section>
+
+<!-- ZIMMER FREI -->
+<section id="zimmer">
+  <div class="container">
+    <div class="zimmer-grid">
+      <div class="zimmer-info">
+        <div class="section-label">Jetzt verfügbar</div>
+        <h2>Freies Zimmer ab 1. August 2026</h2>
+        <p>Ein schönes, möbliertes Zimmer in einer 2er-WG steht zur Verfügung. Das Zimmer ist vollständig eingerichtet und bezugsfertig.</p>
+        <ul class="feature-list">
+          <li>Bett (1,40 × 2,00 m), Schrank, Regal, Schreibtisch mit Stuhl</li>
+          <li>Eigener Eingang, gemeinsames Bad mit Dusche</li>
+          <li>Kochnische mit Herd, Kühlschrank und Oberschränken</li>
+          <li>Gasheizung, Laminatboden</li>
+          <li>Schnelles Internet (100+ Mbit/s) inklusive</li>
+          <li>Fahrradkeller und Waschkeller im Haus</li>
+          <li>Parkplatz in 2 Minuten Fußweg</li>
+        </ul>
+        <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #777;">Wir vermieten bevorzugt an Studentinnen oder Berufseinsteigerinnen (18–25 Jahre). Nichtraucherhaushalt.</p>
+      </div>
+      <div>
+        <div class="price-card">
+          <div class="price-card-header">
+            <div class="badge">Ab 01.08.2026</div>
+            <h3>17 m² möbliertes Zimmer</h3>
+            <div class="date">in 34 m² 2er-WG · 4. Obergeschoss</div>
+          </div>
+          <div class="price-card-body">
+            <div class="price-row">
+              <span>Kaltmiete</span>
+              <span class="val">649 €</span>
+            </div>
+            <div class="price-row">
+              <span>Nebenkosten (pauschal)</span>
+              <span class="val">1 €</span>
+            </div>
+            <div class="price-row">
+              <span>Kaution</span>
+              <span class="val">1.300 €</span>
+            </div>
+            <div class="price-total">
+              <span class="label">Warmmiete gesamt</span>
+              <span class="total">650 €</span>
+            </div>
+            <a href="#kontakt" style="display: block; margin-top: 1.5rem; background: var(--accent); color: white; text-align: center; padding: 0.85rem; border-radius: 6px; text-decoration: none; font-weight: 500; letter-spacing: 0.03em; transition: background 0.2s;" onmouseover="this.style.background='#3a5432'" onmouseout="this.style.background='var(--accent)'">
+              Jetzt anfragen →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="section-label">Kontakt</div>
+        <h2>Interesse? Schreib uns.</h2>
+        <p>Für Anfragen, Besichtigungstermine oder Fragen rund ums Zimmer stehen wir gerne per E-Mail zur Verfügung.</p>
+        <a href="mailto:hallo@gottesweg83.de" class="contact-link">hallo@gottesweg83.de</a>
+        <div class="contact-address">
+          Gottesweg 83 eGbR<br>
+          Karlheinz-Steimel-Weg 17<br>
+          50969 Köln
+        </div>
+      </div>
+      <div class="contact-map">
+        <iframe
+          src="https://www.openstreetmap.org/export/embed.html?bbox=6.9300%2C50.9060%2C6.9500%2C50.9160&layer=mapnik&marker=50.9110%2C6.9400"
+          allowfullscreen
+          loading="lazy"
+          title="Lage Gottesweg 83, Köln-Zollstock">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Gottesweg 83 eGbR
+    <span class="divider">·</span>
+    <a href="impressum.html">Impressum</a>
+  </p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+
+</body>
+</html>
